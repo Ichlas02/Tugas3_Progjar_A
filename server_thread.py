@@ -26,7 +26,9 @@ class ProcessTheClient(threading.Thread):
 					self.connection.sendall(respon.encode('utf-8'))
 					self.server.count_responses()
 				else:
-					break
+					respon = "DITOLAK\r\n"
+                    			logging.warning(f"[SERVER] mengirim respon {respon}")
+                    			self.connection.sendall(respon.encode('utf-8'))
 			else:
 				break
 		self.connection.close()
